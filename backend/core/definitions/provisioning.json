@@ -1,0 +1,5 @@
+{
+    "create_vm": ["allocate_ip", "deploy_template", "power_on"],
+    "initialize_os": ["install_packages", "setup_hostname"],
+    "security": ["create_user", "add_ssh_keys"]
+  }

@@ -1,0 +1,5 @@
+{
+    "shutdown": ["stop_services", "power_off_vm"],
+    "patch_cleanup": ["remove_temp_files", "clean_logs"],
+    "remove_account": ["disable_ad_account", "remove_sudoers"]
+  }

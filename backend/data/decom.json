@@ -1,0 +1,74 @@
+[
+  {
+    "id": "vm-001",
+    "name": "finance-server-1",
+    "stages": {
+      "shutdown": {
+        "operations": {
+          "stop_services": "Success",
+          "power_off_vm": "Running"
+        }
+      },
+      "patch_cleanup": {
+        "operations": {
+          "remove_temp_files": "Not Started",
+          "clean_logs": "Success"
+        }
+      },
+      "remove_account": {
+        "operations": {
+          "disable_ad_account": "Failed",
+          "remove_sudoers": "Success"
+        }
+      }
+    }
+  },
+  {
+    "id": "vm-002",
+    "name": "random-server-2",
+    "stages": {
+      "shutdown": {
+        "operations": {
+          "stop_services": "Not Started",
+          "power_off_vm": "Not Started"
+        }
+      },
+      "patch_cleanup": {
+        "operations": {
+          "remove_temp_files": "Not Started",
+          "clean_logs": "Not Started"
+        }
+      },
+      "remove_account": {
+        "operations": {
+          "disable_ad_account": "Not Started",
+          "remove_sudoers": "Not Started"
+        }
+      }
+    }
+  },
+  {
+    "id": "vm-003",
+    "name": "random-server-3",
+    "stages": {
+      "shutdown": {
+        "operations": {
+          "stop_services": "Not Started",
+          "power_off_vm": "Not Started"
+        }
+      },
+      "patch_cleanup": {
+        "operations": {
+          "remove_temp_files": "Not Started",
+          "clean_logs": "Not Started"
+        }
+      },
+      "remove_account": {
+        "operations": {
+          "disable_ad_account": "Not Started",
+          "remove_sudoers": "Not Started"
+        }
+      }
+    }
+  }
+]

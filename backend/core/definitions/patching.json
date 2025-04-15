@@ -1,0 +1,5 @@
+{
+    "detect": ["check_kernel_version", "fetch_patches"],
+    "apply": ["stop_services", "apply_patch"],
+    "verify": ["reboot", "confirm_version"]
+  }
