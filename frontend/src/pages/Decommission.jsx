@@ -4,9 +4,13 @@ import { fetchMachines, addRandomMachine } from '../utils/api';
 
 export default function Decommission() {
   const [machines, setMachines] = useState([]);
+  const [resetPage, setResetPage] = useState(false); // ✅ for jumping to last page
 
   const loadMachines = () => {
-    fetchMachines().then(setMachines);
+    fetchMachines().then(data => {
+      console.log("📡 Loaded machines:", data);
+      setMachines(data);
+    });
   };
 
   useEffect(() => {
@@ -17,6 +21,8 @@ export default function Decommission() {
     await addRandomMachine();
     loadMachines();
   };
+
+
 
   const updateStageStatus = (machineId, stage, newStatus) => {
     setMachines(prev =>
@@ -37,7 +43,13 @@ export default function Decommission() {
       <button onClick={handleAddMachine} style={{ marginBottom: '1rem' }}>
         ➕ Add Random Machine
       </button>
-      <MachineTable machines={machines} onUpdate={updateStageStatus} />
+      <p>Total machines: {machines.length}</p>
+      <MachineTable
+        machines={machines}
+        onUpdate={updateStageStatus}
+        resetPage={resetPage}
+        setResetPage={setResetPage}
+      />
     </div>
   );
 }

@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import StatusBadge from '../common/StatusBadge';
 import StageActions from './StageActions';
 
 const stages = ['shutdown', 'patch_cleanup', 'remove_account'];
 const PAGE_SIZE = 10;
 
-export default function MachineTable({ machines, onUpdate }) {
-  const [page, setPage] = useState(1);
+export default function MachineTable({ machines, onUpdate, resetPage, setResetPage }) {
   const totalPages = Math.ceil(machines.length / PAGE_SIZE);
+  const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    if (resetPage) {
+      setPage(totalPages);     // ✅ jump to last page
+      setResetPage(false);     // ✅ reset flag
+    }
+  }, [machines.length, resetPage, totalPages, setResetPage]);
 
   const paginated = machines.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
 
