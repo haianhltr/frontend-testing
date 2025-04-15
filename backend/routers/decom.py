@@ -2,7 +2,7 @@ from fastapi import APIRouter, HTTPException
 from models import Machine, StageUpdate
 import json
 import time
-import threading
+import json, time, threading, random
 from pathlib import Path
 
 router = APIRouter()
@@ -67,3 +67,20 @@ def verify_stage(machine_id: str, stage: str, update: StageUpdate):
         raise HTTPException(status_code=400, detail="Invalid status")
     update_stage(machine_id, stage, update.status)
     return {"message": f"Stage '{stage}' set to '{update.status}' manually."}
+
+@router.post("/random")
+def add_random_machine():
+    data = load_data()
+    new_id = f"vm-{len(data) + 1:03}"
+    new_machine = {
+        "id": new_id,
+        "name": f"random-server-{len(data) + 1}",
+        "stages": {
+            "shutdown": random.choice(STATUSES),
+            "patch_cleanup": random.choice(STATUSES),
+            "remove_account": random.choice(STATUSES),
+        }
+    }
+    data.append(new_machine)
+    save_data(data)
+    return {"message": f"{new_machine['name']} added."}

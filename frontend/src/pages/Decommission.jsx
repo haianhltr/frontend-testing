@@ -1,13 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import MachineTable from '../components/decommission/MachineTable';
-import { fetchMachines } from '../utils/api';
+import { fetchMachines, addRandomMachine } from '../utils/api';
 
 export default function Decommission() {
   const [machines, setMachines] = useState([]);
 
-  useEffect(() => {
+  const loadMachines = () => {
     fetchMachines().then(setMachines);
+  };
+
+  useEffect(() => {
+    loadMachines();
   }, []);
+
+  const handleAddMachine = async () => {
+    await addRandomMachine();
+    loadMachines();
+  };
 
   const updateStageStatus = (machineId, stage, newStatus) => {
     setMachines(prev =>
@@ -25,6 +34,9 @@ export default function Decommission() {
   return (
     <div>
       <h2>🧠 Decom Tracker Dashboard (from API)</h2>
+      <button onClick={handleAddMachine} style={{ marginBottom: '1rem' }}>
+        ➕ Add Random Machine
+      </button>
       <MachineTable machines={machines} onUpdate={updateStageStatus} />
     </div>
   );

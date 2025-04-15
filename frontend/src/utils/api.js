@@ -22,3 +22,10 @@ export async function verifyStage(machineId, stage, status) {
   });
   return await res.json();
 }
+
+export async function addRandomMachine() {
+    const res = await fetch("http://localhost:8000/machines/random", {
+      method: "POST"
+    });
+    return await res.json();
+  }
