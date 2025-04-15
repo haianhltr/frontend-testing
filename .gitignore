@@ -1,0 +1,15 @@
+# Node
+node_modules
+dist
+.vite
+.env
+
+# Docker
+*.tar
+*.log
+.env.docker
+docker-compose.override.yml
+
+# OS
+.DS_Store
+Thumbs.db
