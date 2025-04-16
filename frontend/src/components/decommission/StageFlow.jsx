@@ -1,19 +1,13 @@
+import React from "react";
 import OperationDot from "./OperationDot";
 
-export default function StageFlow({ machineId, stageName, operations, onUpdate }) {
+export default function StageFlow({ stageName, operations }) {
   return (
-    <div style={{ marginBottom: "10px" }}>
-      <strong>{stageName}</strong>
+    <div className="stage-block">
+      <p className="stage-title">{stageName}</p>
       <div className="operation-row">
-        {Object.entries(operations).map(([opName, status]) => (
-          <OperationDot
-            key={opName}
-            machineId={machineId}
-            stage={stageName}
-            opName={opName}
-            status={status}
-            onUpdate={onUpdate}
-          />
+        {Object.entries(operations).map(([op, status]) => (
+          <OperationDot key={op} name={op} status={status} />
         ))}
       </div>
     </div>

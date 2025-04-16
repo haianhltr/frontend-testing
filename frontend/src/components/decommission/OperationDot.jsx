@@ -1,16 +1,23 @@
-export default function OperationDot({ machineId, stage, opName, status, onUpdate }) {
-    const update = (newStatus) => {
-      onUpdate(machineId, stage, opName, newStatus);
-    };
+import React from "react";
 
-    return (
-      <div className="operation-dot">
-        <div>● {status}</div>
-        <div className="op-label">{opName}</div>
-        <div className="op-buttons">
-          <button onClick={() => update("Running")}>▶</button>
-          <button onClick={() => update("Success")}>✔</button>
-        </div>
+const statusIcons = {
+  "Success": "✅",
+  "Running": "🔄",
+  "Failed": "❌",
+  "Not Started": "⏳",
+};
+
+export default function OperationDot({ status, name }) {
+  return (
+    <div className="operation-dot" title={status}>
+      <div className={`dot ${status.replace(/\s+/g, '-').toLowerCase()}`}>
+        {statusIcons[status] || "❔"}
       </div>
-    );
-  }
+      <p className="op-label">{name}</p>
+      <div className="op-buttons">
+        <button>▶</button>
+        <button>✔</button>
+      </div>
+    </div>
+  );
+}
