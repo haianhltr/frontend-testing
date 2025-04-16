@@ -1,25 +1,17 @@
-import React from 'react';
-
-const colors = {
-  'Not Started': 'gray',
-  'Running': 'blue',
-  'Success': 'green',
-  'Failed': 'red',
-};
-
 export default function StatusBadge({ status }) {
-  return (
-    <span
-      style={{
-        backgroundColor: colors[status] || 'black',
-        color: 'white',
-        padding: '4px 8px',
-        borderRadius: '8px',
-        fontSize: '0.85em',
-        marginRight: '5px',
-      }}
-    >
-      {status}
-    </span>
-  );
+  const emoji = {
+    "Not Started": "⚪",
+    "Running": "🔵",
+    "Success": "🟢",
+    "Failed": "🔴",
+  }[status] || "❔";
+
+  const className = {
+    "Not Started": "status-not-started",
+    "Running": "status-running",
+    "Success": "status-success",
+    "Failed": "status-failed",
+  }[status];
+
+  return <span className={`status-dot ${className}`} title={status}>{emoji}</span>;
 }

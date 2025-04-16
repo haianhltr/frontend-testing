@@ -1,55 +1,47 @@
-import React, { useEffect, useState } from 'react';
-import MachineTable from '../components/decommission/MachineTable';
-import { fetchMachines, addRandomMachine } from '../utils/api';
+import { useEffect, useState } from "react";
+import MachineCard from "../components/decommission/MachineCard";
+import { fetchMachines, addRandomMachine } from "../utils/api";
 
 export default function Decommission() {
   const [machines, setMachines] = useState([]);
-  const [resetPage, setResetPage] = useState(false); // ✅ for jumping to last page
-
-  const loadMachines = () => {
-    fetchMachines().then(data => {
-      console.log("📡 Loaded machines:", data);
-      setMachines(data);
-    });
-  };
 
   useEffect(() => {
-    loadMachines();
+    fetchMachines().then(setMachines);
   }, []);
 
-  const handleAddMachine = async () => {
+  const handleAdd = async () => {
     await addRandomMachine();
-    loadMachines();
+    fetchMachines().then(setMachines);
   };
 
-
-
-  const updateStageStatus = (machineId, stage, newStatus) => {
+  const handleUpdate = (machineId, stage, op, status) => {
     setMachines(prev =>
-      prev.map(machine =>
-        machine.id === machineId
+      prev.map(m =>
+        m.id === machineId
           ? {
-              ...machine,
-              stages: { ...machine.stages, [stage]: newStatus },
+              ...m,
+              stages: {
+                ...m.stages,
+                [stage]: {
+                  operations: {
+                    ...m.stages[stage].operations,
+                    [op]: status,
+                  },
+                },
+              },
             }
-          : machine
+          : m
       )
     );
   };
 
   return (
     <div>
-      <h2>🧠 Decom Tracker Dashboard (from API)</h2>
-      <button onClick={handleAddMachine} style={{ marginBottom: '1rem' }}>
-        ➕ Add Random Machine
-      </button>
-      <p>Total machines: {machines.length}</p>
-      <MachineTable
-        machines={machines}
-        onUpdate={updateStageStatus}
-        resetPage={resetPage}
-        setResetPage={setResetPage}
-      />
+      <h2>🧠 Decommission Tracker</h2>
+      <button onClick={handleAdd}>Add Machine</button>
+      {machines.map(m => (
+        <MachineCard key={m.id} machine={m} onUpdate={handleUpdate} />
+      ))}
     </div>
   );
 }

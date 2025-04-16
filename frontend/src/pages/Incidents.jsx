@@ -1,3 +1,3 @@
 export default function Incidents() {
-    return <h2>🟢 Incidents Page</h2>;
-  }
+  return <h2>🟢 Incidents Page</h2>;
+}
