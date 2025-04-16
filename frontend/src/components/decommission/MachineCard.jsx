@@ -3,7 +3,8 @@ import StageFlow from "./StageFlow";
 import "../../styles/decom.css";
 
 export default function MachineCard({ machine }) {
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true); 
+
 
   // Count operation statuses
   const stageCounts = Object.values(machine.stages).flatMap(stage =>
