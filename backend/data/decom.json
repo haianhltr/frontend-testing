@@ -262,5 +262,53 @@
         }
       }
     }
+  },
+  {
+    "id": "vm-012",
+    "name": "random-server-12",
+    "stages": {
+      "shutdown": {
+        "operations": {
+          "stop_services": "Not Started",
+          "power_off_vm": "Not Started"
+        }
+      },
+      "patch_cleanup": {
+        "operations": {
+          "remove_temp_files": "Not Started",
+          "clean_logs": "Not Started"
+        }
+      },
+      "remove_account": {
+        "operations": {
+          "disable_ad_account": "Not Started",
+          "remove_sudoers": "Not Started"
+        }
+      }
+    }
+  },
+  {
+    "id": "vm-013",
+    "name": "random-server-13",
+    "stages": {
+      "shutdown": {
+        "operations": {
+          "stop_services": "Not Started",
+          "power_off_vm": "Not Started"
+        }
+      },
+      "patch_cleanup": {
+        "operations": {
+          "remove_temp_files": "Not Started",
+          "clean_logs": "Not Started"
+        }
+      },
+      "remove_account": {
+        "operations": {
+          "disable_ad_account": "Not Started",
+          "remove_sudoers": "Not Started"
+        }
+      }
+    }
   }
 ]

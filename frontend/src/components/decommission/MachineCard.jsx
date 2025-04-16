@@ -5,6 +5,7 @@ import "../../styles/decom.css";
 export default function MachineCard({ machine }) {
   const [collapsed, setCollapsed] = useState(false);
 
+  // Count operation statuses
   const stageCounts = Object.values(machine.stages).flatMap(stage =>
     Object.values(stage.operations)
   );
@@ -22,15 +23,18 @@ export default function MachineCard({ machine }) {
 
   return (
     <div className="machine-card">
-      <div className="machine-header">
-        <strong>{machine.name}</strong>
-        <button onClick={() => setCollapsed(!collapsed)}>
-          {collapsed ? "▶" : "▼"}
-        </button>
-        <div className="summary">
-          🟢 {statusSummary["Success"]} | 🔄 {statusSummary["Running"]} | ❌ {statusSummary["Failed"]} | ⏳ {statusSummary["Not Started"]}
+      <div className="machine-header" onClick={() => setCollapsed(!collapsed)}>
+        <span className="machine-name">{machine.name}</span>
+        <div className="machine-right">
+          <div className="summary">
+            🟢 {statusSummary["Success"]} | 🔄 {statusSummary["Running"]} | ❌ {statusSummary["Failed"]} | ⏳ {statusSummary["Not Started"]}
+          </div>
+          <button className="op-button toggle-btn">
+            {collapsed ? "▶" : "🔽"}
+          </button>
         </div>
       </div>
+
       {!collapsed && (
         <div className="machine-body">
           {Object.entries(machine.stages).map(([stage, data]) => (

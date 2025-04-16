@@ -2,16 +2,61 @@
     background: #222;
     border-radius: 12px;
     padding: 16px;
-    margin: 1rem 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    margin: 2rem 0; /* ⬅ Increased vertical margin */
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+    border: 1px solid rgba(255, 255, 255, 0.05); /* Optional soft border */
   }
   
   .machine-header {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    padding: 12px 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.2s ease;
+  }
+
+  .machine-header:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }  
+  
+  .machine-name {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #f1f1f1;
+  }
+
+.machine-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.collapse-arrow {
+    transition: transform 0.2s ease;
   }
   
+  .machine-header:hover .collapse-arrow {
+    transform: scale(1.2);
+  }
+  
+
+    .machine-right button {
+    background-color: #292929;
+    border: 1px solid #444;
+    border-radius: 6px;
+    padding: 2px 8px;
+    color: #ccc;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    }
+
+    .machine-right button:hover {
+        background-color: #3a3a3a;
+        }
+
   .summary {
     font-size: 0.85rem;
     color: #ccc;
@@ -34,11 +79,11 @@
   .operation-row::before {
     content: "";
     position: absolute;
-    height: 2px;
-    background: rgba(255,255,255,0.08);
-    top: 20px;
-    left: 40px;
-    right: 40px;
+    height: 1px;
+    background: rgba(255,255,255,0.05); /* lighter */
+    top: 30px;
+    left: 70px;
+    right: 70px;
     z-index: 0;
   }
   
@@ -66,5 +111,52 @@
   .op-buttons {
     display: flex;
     gap: 6px;
+  }
+  
+  .add-btn {
+    background-color: #292929;
+    color: #fff;
+    padding: 8px 14px;
+    font-size: 14px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+  }
+  
+  .add-btn:hover {
+    background-color: #3a3a3a;
+  }
+  
+  .add-btn:active {
+    background-color: #222;
+    transform: scale(0.98);
+  }
+  
+  .op-button {
+    background-color: #292929;
+    color: #fff;
+    padding: 6px 12px;
+    font-size: 13px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.1s ease;
+  }
+  
+  .op-button:hover {
+    background-color: #3a3a3a;
+  }
+  
+  .op-button:active {
+    background-color: #222;
+    transform: scale(0.96);
+  }
+  
+
+  .toggle-btn {
+    padding: 4px 8px;
+    font-size: 14px;
+    margin-left: 8px;
   }
   

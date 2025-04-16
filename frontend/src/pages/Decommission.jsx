@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import MachineCard from "../components/decommission/MachineCard";
 import { fetchMachines, addRandomMachine } from "../utils/api";
+import "../styles/decom.css";
+
+
 
 export default function Decommission() {
   const [machines, setMachines] = useState([]);
@@ -9,10 +12,11 @@ export default function Decommission() {
     fetchMachines().then(setMachines);
   }, []);
 
-  const handleAdd = async () => {
-    await addRandomMachine();
-    fetchMachines().then(setMachines);
+  const handleAddMachine = async () => {
+    await addRandomMachine();  // This is from your api.js
+    loadMachines();            // This will re-fetch machines
   };
+  
 
   const handleUpdate = (machineId, stage, op, status) => {
     setMachines(prev =>
@@ -38,7 +42,8 @@ export default function Decommission() {
   return (
     <div>
       <h2>🧠 Decommission Tracker</h2>
-      <button onClick={handleAdd}>Add Machine</button>
+      <button className="add-btn" onClick={handleAddMachine}>➕ Add Machine</button>
+
       {machines.map(m => (
         <MachineCard key={m.id} machine={m} onUpdate={handleUpdate} />
       ))}

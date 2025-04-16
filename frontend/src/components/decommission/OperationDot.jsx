@@ -15,8 +15,8 @@ export default function OperationDot({ status, name }) {
       </div>
       <p className="op-label">{name}</p>
       <div className="op-buttons">
-        <button>▶</button>
-        <button>✔</button>
+        <button className="op-button" title="Run Operation">▶</button>
+        <button className="op-button" title="Verify Operation">✔</button>
       </div>
     </div>
   );
