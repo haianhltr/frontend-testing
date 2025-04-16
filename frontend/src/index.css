@@ -29,9 +29,8 @@ body {
 
 .operation-row {
   display: flex;
-  gap: 32px;
   align-items: center;
-  flex-wrap: wrap;
+  gap: 24px;
   padding: 12px 0;
 }
 
