@@ -1,8 +1,8 @@
 import json
 from pathlib import Path
 from typing import List
-from models.decom import Machine
-from core.utils import load_workflow_definition
+from backend.models.decom import Machine 
+from backend.core.utils.json_loader import load_workflow_definition
 
 DATA_FILE = Path("data/decom.json")
 

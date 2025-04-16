@@ -13,7 +13,9 @@ export default function OperationDot({ status, name }) {
       <div className={`dot ${status.replace(/\s+/g, '-').toLowerCase()}`}>
         {statusIcons[status] || "❔"}
       </div>
-      <p className="op-label">{name}</p>
+        <p className="op-label">
+          {name.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase())}
+       </p>
       <div className="op-buttons">
         <button className="op-button" title="Run Operation">▶</button>
         <button className="op-button" title="Verify Operation">✔</button>
