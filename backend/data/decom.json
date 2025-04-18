@@ -6,19 +6,19 @@
       "shutdown": {
         "operations": {
           "stop_services": "Success",
-          "power_off_vm": "Running"
+          "power_off_vm": "Success"
         }
       },
       "patch_cleanup": {
         "operations": {
-          "remove_temp_files": "Not Started",
-          "clean_logs": "Success"
+          "remove_temp_files": "Running",
+          "clean_logs": "Running"
         }
       },
       "remove_account": {
         "operations": {
-          "disable_ad_account": "Failed",
-          "remove_sudoers": "Success",
+          "disable_ad_account": "Running",
+          "remove_sudoers": "Running",
           "remove_automox": "Success"
         }
       }
@@ -30,20 +30,20 @@
     "stages": {
       "shutdown": {
         "operations": {
-          "stop_services": "Not Started",
-          "power_off_vm": "Not Started"
+          "stop_services": "Success",
+          "power_off_vm": "Success"
         }
       },
       "patch_cleanup": {
         "operations": {
-          "remove_temp_files": "Not Started",
-          "clean_logs": "Not Started"
+          "remove_temp_files": "Success",
+          "clean_logs": "Success"
         }
       },
       "remove_account": {
         "operations": {
-          "disable_ad_account": "Not Started",
-          "remove_sudoers": "Not Started"
+          "disable_ad_account": "Success",
+          "remove_sudoers": "Success"
         }
       }
     }
@@ -54,20 +54,20 @@
     "stages": {
       "shutdown": {
         "operations": {
-          "stop_services": "Not Started",
-          "power_off_vm": "Not Started"
+          "stop_services": "Success",
+          "power_off_vm": "Success"
         }
       },
       "patch_cleanup": {
         "operations": {
-          "remove_temp_files": "Not Started",
-          "clean_logs": "Not Started"
+          "remove_temp_files": "Success",
+          "clean_logs": "Success"
         }
       },
       "remove_account": {
         "operations": {
-          "disable_ad_account": "Not Started",
-          "remove_sudoers": "Not Started"
+          "disable_ad_account": "Success",
+          "remove_sudoers": "Success"
         }
       }
     }
@@ -78,20 +78,20 @@
     "stages": {
       "shutdown": {
         "operations": {
-          "stop_services": "Not Started",
-          "power_off_vm": "Not Started"
+          "stop_services": "Success",
+          "power_off_vm": "Success"
         }
       },
       "patch_cleanup": {
         "operations": {
-          "remove_temp_files": "Not Started",
-          "clean_logs": "Not Started"
+          "remove_temp_files": "Success",
+          "clean_logs": "Success"
         }
       },
       "remove_account": {
         "operations": {
-          "disable_ad_account": "Not Started",
-          "remove_sudoers": "Not Started"
+          "disable_ad_account": "Success",
+          "remove_sudoers": "Failed"
         }
       }
     }
@@ -102,20 +102,20 @@
     "stages": {
       "shutdown": {
         "operations": {
-          "stop_services": "Not Started",
-          "power_off_vm": "Not Started"
+          "stop_services": "Failed",
+          "power_off_vm": "Failed"
         }
       },
       "patch_cleanup": {
         "operations": {
-          "remove_temp_files": "Not Started",
-          "clean_logs": "Not Started"
+          "remove_temp_files": "Failed",
+          "clean_logs": "Failed"
         }
       },
       "remove_account": {
         "operations": {
-          "disable_ad_account": "Not Started",
-          "remove_sudoers": "Not Started"
+          "disable_ad_account": "Failed",
+          "remove_sudoers": "Failed"
         }
       }
     }
@@ -126,20 +126,20 @@
     "stages": {
       "shutdown": {
         "operations": {
-          "stop_services": "Not Started",
-          "power_off_vm": "Not Started"
+          "stop_services": "Success",
+          "power_off_vm": "Failed"
         }
       },
       "patch_cleanup": {
         "operations": {
-          "remove_temp_files": "Not Started",
-          "clean_logs": "Not Started"
+          "remove_temp_files": "Failed",
+          "clean_logs": "Success"
         }
       },
       "remove_account": {
         "operations": {
-          "disable_ad_account": "Not Started",
-          "remove_sudoers": "Not Started"
+          "disable_ad_account": "Failed",
+          "remove_sudoers": "Failed"
         }
       }
     }
@@ -150,20 +150,20 @@
     "stages": {
       "shutdown": {
         "operations": {
-          "stop_services": "Not Started",
-          "power_off_vm": "Not Started"
+          "stop_services": "Failed",
+          "power_off_vm": "Failed"
         }
       },
       "patch_cleanup": {
         "operations": {
-          "remove_temp_files": "Not Started",
-          "clean_logs": "Not Started"
+          "remove_temp_files": "Failed",
+          "clean_logs": "Failed"
         }
       },
       "remove_account": {
         "operations": {
-          "disable_ad_account": "Not Started",
-          "remove_sudoers": "Not Started"
+          "disable_ad_account": "Failed",
+          "remove_sudoers": "Failed"
         }
       }
     }
@@ -174,20 +174,20 @@
     "stages": {
       "shutdown": {
         "operations": {
-          "stop_services": "Not Started",
-          "power_off_vm": "Not Started"
+          "stop_services": "Running",
+          "power_off_vm": "Running"
         }
       },
       "patch_cleanup": {
         "operations": {
-          "remove_temp_files": "Not Started",
-          "clean_logs": "Not Started"
+          "remove_temp_files": "Running",
+          "clean_logs": "Running"
         }
       },
       "remove_account": {
         "operations": {
-          "disable_ad_account": "Not Started",
-          "remove_sudoers": "Not Started"
+          "disable_ad_account": "Running",
+          "remove_sudoers": "Running"
         }
       }
     }
@@ -198,20 +198,20 @@
     "stages": {
       "shutdown": {
         "operations": {
-          "stop_services": "Not Started",
-          "power_off_vm": "Not Started"
+          "stop_services": "Running",
+          "power_off_vm": "Running"
         }
       },
       "patch_cleanup": {
         "operations": {
-          "remove_temp_files": "Not Started",
-          "clean_logs": "Not Started"
+          "remove_temp_files": "Running",
+          "clean_logs": "Running"
         }
       },
       "remove_account": {
         "operations": {
-          "disable_ad_account": "Not Started",
-          "remove_sudoers": "Not Started"
+          "disable_ad_account": "Running",
+          "remove_sudoers": "Running"
         }
       }
     }
@@ -222,20 +222,20 @@
     "stages": {
       "shutdown": {
         "operations": {
-          "stop_services": "Not Started",
-          "power_off_vm": "Not Started"
+          "stop_services": "Running",
+          "power_off_vm": "Running"
         }
       },
       "patch_cleanup": {
         "operations": {
-          "remove_temp_files": "Not Started",
-          "clean_logs": "Not Started"
+          "remove_temp_files": "Running",
+          "clean_logs": "Running"
         }
       },
       "remove_account": {
         "operations": {
-          "disable_ad_account": "Not Started",
-          "remove_sudoers": "Not Started"
+          "disable_ad_account": "Running",
+          "remove_sudoers": "Running"
         }
       }
     }
@@ -246,92 +246,20 @@
     "stages": {
       "shutdown": {
         "operations": {
-          "stop_services": "Not Started",
-          "power_off_vm": "Not Started"
+          "stop_services": "Running",
+          "power_off_vm": "Running"
         }
       },
       "patch_cleanup": {
         "operations": {
-          "remove_temp_files": "Not Started",
-          "clean_logs": "Not Started"
+          "remove_temp_files": "Running",
+          "clean_logs": "Running"
         }
       },
       "remove_account": {
         "operations": {
-          "disable_ad_account": "Not Started",
-          "remove_sudoers": "Not Started"
-        }
-      }
-    }
-  },
-  {
-    "id": "vm-012",
-    "name": "random-server-12",
-    "stages": {
-      "shutdown": {
-        "operations": {
-          "stop_services": "Not Started",
-          "power_off_vm": "Not Started"
-        }
-      },
-      "patch_cleanup": {
-        "operations": {
-          "remove_temp_files": "Not Started",
-          "clean_logs": "Not Started"
-        }
-      },
-      "remove_account": {
-        "operations": {
-          "disable_ad_account": "Not Started",
-          "remove_sudoers": "Not Started"
-        }
-      }
-    }
-  },
-  {
-    "id": "vm-013",
-    "name": "random-server-13",
-    "stages": {
-      "shutdown": {
-        "operations": {
-          "stop_services": "Not Started",
-          "power_off_vm": "Not Started"
-        }
-      },
-      "patch_cleanup": {
-        "operations": {
-          "remove_temp_files": "Not Started",
-          "clean_logs": "Not Started"
-        }
-      },
-      "remove_account": {
-        "operations": {
-          "disable_ad_account": "Not Started",
-          "remove_sudoers": "Not Started"
-        }
-      }
-    }
-  },
-  {
-    "id": "vm-014",
-    "name": "random-server-14",
-    "stages": {
-      "shutdown": {
-        "operations": {
-          "stop_services": "Not Started",
-          "power_off_vm": "Not Started"
-        }
-      },
-      "patch_cleanup": {
-        "operations": {
-          "remove_temp_files": "Not Started",
-          "clean_logs": "Not Started"
-        }
-      },
-      "remove_account": {
-        "operations": {
-          "disable_ad_account": "Not Started",
-          "remove_sudoers": "Not Started"
+          "disable_ad_account": "Running",
+          "remove_sudoers": "Running"
         }
       }
     }

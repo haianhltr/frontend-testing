@@ -1,8 +1,9 @@
 import json
 from pathlib import Path
 from typing import List
-from backend.models.decom import Machine 
-from backend.core.utils.json_loader import load_workflow_definition
+from models.decom import Machine
+from core.utils.json_loader import load_workflow_definition  
+
 
 DATA_FILE = Path("data/decom.json")
 
@@ -20,8 +21,9 @@ def update_operation(machine_id: str, stage: str, operation: str, new_status: st
     data = load_data()
     for m in data:
         if m.id == machine_id:
-            if stage in m.stages and operation in m.stages[stage]["operations"]:
-                m.stages[stage]["operations"][operation] = new_status
+            stage_obj = m.stages.get(stage)
+            if stage_obj and operation in stage_obj.operations:
+                stage_obj.operations[operation] = new_status
                 save_data(data)
                 return
     raise ValueError("Machine or operation not found")

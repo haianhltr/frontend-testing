@@ -3,40 +3,25 @@ import MachineCard from "../components/decommission/MachineCard";
 import { fetchMachines, addRandomMachine } from "../utils/api";
 import "../styles/decom.css";
 
-
-
 export default function Decommission() {
   const [machines, setMachines] = useState([]);
 
+  const loadMachines = async () => {
+    const data = await fetchMachines();
+    setMachines(data);
+  };
+
   useEffect(() => {
-    fetchMachines().then(setMachines);
+    loadMachines();
   }, []);
 
   const handleAddMachine = async () => {
-    await addRandomMachine();  // This is from your api.js
-    loadMachines();            // This will re-fetch machines
+    await addRandomMachine();
+    await loadMachines(); // ✅ Refresh list after adding
   };
-  
 
-  const handleUpdate = (machineId, stage, op, status) => {
-    setMachines(prev =>
-      prev.map(m =>
-        m.id === machineId
-          ? {
-              ...m,
-              stages: {
-                ...m.stages,
-                [stage]: {
-                  operations: {
-                    ...m.stages[stage].operations,
-                    [op]: status,
-                  },
-                },
-              },
-            }
-          : m
-      )
-    );
+  const handleUpdate = async () => {
+    await loadMachines(); // ✅ Refresh after retry
   };
 
   return (

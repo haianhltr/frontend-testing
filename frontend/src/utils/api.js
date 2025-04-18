@@ -18,3 +18,10 @@ export async function updateOperation(machineId, stage, op, status) {
   });
   return await res.json();
 }
+
+export async function retryOperation(machineId, stage, op) {
+  const res = await fetch(`${API_BASE}/machines/${machineId}/stage/${stage}/op/${op}/run`, {
+    method: "POST",
+  });
+  return await res.json();
+}

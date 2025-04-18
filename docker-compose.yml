@@ -18,14 +18,16 @@ services:
       - "8000:8000"
     volumes:
       - ./backend:/app
+    environment:
+      - PYTHONPATH=/app
     command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
     
   test:
     build:
       context: ./backend
     volumes:
-      - ./backend:/app/backend
+      - ./backend:/app
     working_dir: /app
     environment:
       - PYTHONPATH=/app
-    command: ["pytest", "backend/tests/"]
+    command: ["pytest", "tests/"]

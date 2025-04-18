@@ -1,12 +1,42 @@
 import React, { useState } from "react";
 import StageFlow from "./StageFlow";
+import { retryOperation } from "../../utils/api";
 import "../../styles/decom.css";
 
-export default function MachineCard({ machine }) {
-  const [collapsed, setCollapsed] = useState(true); 
+export default function MachineCard({ machine, onUpdate }) {
+  const [collapsed, setCollapsed] = useState(true);
 
+  // 🧠 Track retrying and retryCount by stage+op
+  const [retryingOps, setRetryingOps] = useState({});
+  const [retryCount, setRetryCount] = useState({});
 
-  // Count operation statuses
+  const handleRetry = async (machineId, stage, op) => {
+    const key = `${stage}-${op}`;
+    if (retryingOps[key]) return;
+
+    // 🔁 Limit retries to 3
+    const count = retryCount[key] || 0;
+    if (count >= 3) return;
+
+    setRetryingOps(prev => ({ ...prev, [key]: true }));
+    setRetryCount(prev => ({ ...prev, [key]: count + 1 }));
+
+    try {
+      await retryOperation(machineId, stage, op);
+    } finally {
+      // ♻️ Give backend time to update status
+      setTimeout(() => {
+        onUpdate();
+        setRetryingOps(prev => ({ ...prev, [key]: false }));
+      }, 1500);
+    }
+  };
+
+  const handleCancelRetry = (stage, op) => {
+    const key = `${stage}-${op}`;
+    setRetryingOps(prev => ({ ...prev, [key]: false }));
+  };
+
   const stageCounts = Object.values(machine.stages).flatMap(stage =>
     Object.values(stage.operations)
   );
@@ -39,7 +69,15 @@ export default function MachineCard({ machine }) {
       {!collapsed && (
         <div className="machine-body">
           {Object.entries(machine.stages).map(([stage, data]) => (
-            <StageFlow key={stage} stageName={stage} operations={data.operations} />
+            <StageFlow
+              key={stage}
+              stageName={stage}
+              operations={data.operations}
+              machineId={machine.id}
+              onRetry={handleRetry}
+              onCancel={handleCancelRetry}
+              retryMeta={retryingOps}
+            />
           ))}
         </div>
       )}
