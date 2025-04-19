@@ -1,46 +1,52 @@
-import json
-from pathlib import Path
-from typing import List
-from models.decom import Machine
-from core.utils.json_loader import load_workflow_definition  
+# services/decom.py
 
+import random
+import string
+from db.session import SessionLocal
+from db.crud import (
+    get_all_machines,
+    get_machine,
+    create_machine,
+    update_machine_stage_op,
+)
+from db.models import Machine
+from core.utils.json_loader import load_workflow_definition
 
-DATA_FILE = Path("data/decom.json")
+# Generate a random machine name
+def generate_random_name():
+    n = random.randint(1, 100)
+    return f"random-server-{n:02d}"
 
-def load_data() -> List[Machine]:
-    if DATA_FILE.exists():
-        with open(DATA_FILE) as f:
-            return [Machine(**m) for m in json.load(f)]
-    return []
+# Generate a random machine ID
+def generate_random_id():
+    return "vm-" + ''.join(random.choices(string.digits, k=3))
 
-def save_data(data: List[Machine]):
-    with open(DATA_FILE, "w") as f:
-        json.dump([m.dict() for m in data], f, indent=2)
-
-def update_operation(machine_id: str, stage: str, operation: str, new_status: str):
-    data = load_data()
-    for m in data:
-        if m.id == machine_id:
-            stage_obj = m.stages.get(stage)
-            if stage_obj and operation in stage_obj.operations:
-                stage_obj.operations[operation] = new_status
-                save_data(data)
-                return
-    raise ValueError("Machine or operation not found")
-
-def create_blank_machine(machine_id: str, name: str) -> Machine:
+# Construct empty stage+operation template from workflow def
+def build_stage_structure():
     defs = load_workflow_definition("decom")
-    stages = {
-        stage: {"operations": {op: "Not Started" for op in ops}}
-        for stage, ops in defs.items()
-    }
-    return Machine(id=machine_id, name=name, stages=stages)
+    stages = {}
+    for stage, ops in defs.items():
+        stages[stage] = {
+            "operations": {op: "Not Started" for op in ops}
+        }
+    return stages
 
+# Get all machines from DB
+def load_data():
+    db = SessionLocal()
+    return get_all_machines(db)
+
+# Add a new machine to DB
 def add_random_machine():
-    data = load_data()
-    new_id = f"vm-{len(data) + 1:03}"
-    new_name = f"random-server-{len(data) + 1}"
-    new_machine = create_blank_machine(new_id, new_name)
-    data.append(new_machine)
-    save_data(data)
-    return new_machine
+    db = SessionLocal()
+    new_machine = Machine(
+        id=generate_random_id(),
+        name=generate_random_name(),
+        stages=build_stage_structure()
+    )
+    return create_machine(db, new_machine)
+
+# Update operation status in DB
+def update_operation(machine_id: str, stage: str, operation: str, new_status: str):
+    db = SessionLocal()
+    return update_machine_stage_op(db, machine_id, stage, operation, new_status)

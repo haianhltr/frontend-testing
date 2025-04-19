@@ -4,7 +4,7 @@ import uuid
 import time
 import random
 import asyncio  # ✅ Needed for background task sleep
-from services import decom as decom_service
+from domains.decom import service as decom_service
 
 job_store = {}
 

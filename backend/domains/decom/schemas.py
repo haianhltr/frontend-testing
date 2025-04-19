@@ -1,6 +1,12 @@
 from pydantic import BaseModel
 from typing import Dict
-from models.base import MachineBase, Stage
+
+class Stage(BaseModel):
+    operations: Dict[str, str]
+
+class MachineBase(BaseModel):
+    id: str
+    name: str
 
 class Machine(MachineBase):
     stages: Dict[str, Stage]

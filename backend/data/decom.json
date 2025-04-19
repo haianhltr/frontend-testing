@@ -5,7 +5,7 @@
     "stages": {
       "shutdown": {
         "operations": {
-          "stop_services": "Success",
+          "stop_services": "Failed",
           "power_off_vm": "Success"
         }
       },
@@ -260,6 +260,342 @@
         "operations": {
           "disable_ad_account": "Running",
           "remove_sudoers": "Running"
+        }
+      }
+    }
+  },
+  {
+    "id": "vm-012",
+    "name": "random-server-12",
+    "stages": {
+      "shutdown": {
+        "operations": {
+          "stop_services": "Running",
+          "power_off_vm": "Running"
+        }
+      },
+      "patch_cleanup": {
+        "operations": {
+          "remove_temp_files": "Running",
+          "clean_logs": "Running"
+        }
+      },
+      "remove_account": {
+        "operations": {
+          "disable_ad_account": "Running",
+          "remove_sudoers": "Running"
+        }
+      }
+    }
+  },
+  {
+    "id": "vm-013",
+    "name": "random-server-13",
+    "stages": {
+      "shutdown": {
+        "operations": {
+          "stop_services": "Running",
+          "power_off_vm": "Running"
+        }
+      },
+      "patch_cleanup": {
+        "operations": {
+          "remove_temp_files": "Running",
+          "clean_logs": "Running"
+        }
+      },
+      "remove_account": {
+        "operations": {
+          "disable_ad_account": "Running",
+          "remove_sudoers": "Running"
+        }
+      }
+    }
+  },
+  {
+    "id": "vm-014",
+    "name": "random-server-14",
+    "stages": {
+      "shutdown": {
+        "operations": {
+          "stop_services": "Running",
+          "power_off_vm": "Running"
+        }
+      },
+      "patch_cleanup": {
+        "operations": {
+          "remove_temp_files": "Running",
+          "clean_logs": "Running"
+        }
+      },
+      "remove_account": {
+        "operations": {
+          "disable_ad_account": "Running",
+          "remove_sudoers": "Running"
+        }
+      }
+    }
+  },
+  {
+    "id": "vm-015",
+    "name": "random-server-15",
+    "stages": {
+      "shutdown": {
+        "operations": {
+          "stop_services": "Running",
+          "power_off_vm": "Running"
+        }
+      },
+      "patch_cleanup": {
+        "operations": {
+          "remove_temp_files": "Running",
+          "clean_logs": "Running"
+        }
+      },
+      "remove_account": {
+        "operations": {
+          "disable_ad_account": "Running",
+          "remove_sudoers": "Running"
+        }
+      }
+    }
+  },
+  {
+    "id": "vm-016",
+    "name": "random-server-16",
+    "stages": {
+      "shutdown": {
+        "operations": {
+          "stop_services": "Running",
+          "power_off_vm": "Running"
+        }
+      },
+      "patch_cleanup": {
+        "operations": {
+          "remove_temp_files": "Running",
+          "clean_logs": "Running"
+        }
+      },
+      "remove_account": {
+        "operations": {
+          "disable_ad_account": "Running",
+          "remove_sudoers": "Running"
+        }
+      }
+    }
+  },
+  {
+    "id": "vm-017",
+    "name": "random-server-17",
+    "stages": {
+      "shutdown": {
+        "operations": {
+          "stop_services": "Running",
+          "power_off_vm": "Running"
+        }
+      },
+      "patch_cleanup": {
+        "operations": {
+          "remove_temp_files": "Running",
+          "clean_logs": "Running"
+        }
+      },
+      "remove_account": {
+        "operations": {
+          "disable_ad_account": "Running",
+          "remove_sudoers": "Running"
+        }
+      }
+    }
+  },
+  {
+    "id": "vm-018",
+    "name": "random-server-18",
+    "stages": {
+      "shutdown": {
+        "operations": {
+          "stop_services": "Running",
+          "power_off_vm": "Running"
+        }
+      },
+      "patch_cleanup": {
+        "operations": {
+          "remove_temp_files": "Running",
+          "clean_logs": "Running"
+        }
+      },
+      "remove_account": {
+        "operations": {
+          "disable_ad_account": "Running",
+          "remove_sudoers": "Running"
+        }
+      }
+    }
+  },
+  {
+    "id": "vm-019",
+    "name": "random-server-19",
+    "stages": {
+      "shutdown": {
+        "operations": {
+          "stop_services": "Running",
+          "power_off_vm": "Running"
+        }
+      },
+      "patch_cleanup": {
+        "operations": {
+          "remove_temp_files": "Running",
+          "clean_logs": "Running"
+        }
+      },
+      "remove_account": {
+        "operations": {
+          "disable_ad_account": "Running",
+          "remove_sudoers": "Running"
+        }
+      }
+    }
+  },
+  {
+    "id": "vm-020",
+    "name": "random-server-20",
+    "stages": {
+      "shutdown": {
+        "operations": {
+          "stop_services": "Running",
+          "power_off_vm": "Running"
+        }
+      },
+      "patch_cleanup": {
+        "operations": {
+          "remove_temp_files": "Running",
+          "clean_logs": "Running"
+        }
+      },
+      "remove_account": {
+        "operations": {
+          "disable_ad_account": "Running",
+          "remove_sudoers": "Running"
+        }
+      }
+    }
+  },
+  {
+    "id": "vm-021",
+    "name": "random-server-21",
+    "stages": {
+      "shutdown": {
+        "operations": {
+          "stop_services": "Running",
+          "power_off_vm": "Running"
+        }
+      },
+      "patch_cleanup": {
+        "operations": {
+          "remove_temp_files": "Running",
+          "clean_logs": "Running"
+        }
+      },
+      "remove_account": {
+        "operations": {
+          "disable_ad_account": "Running",
+          "remove_sudoers": "Running"
+        }
+      }
+    }
+  },
+  {
+    "id": "vm-022",
+    "name": "random-server-22",
+    "stages": {
+      "shutdown": {
+        "operations": {
+          "stop_services": "Running",
+          "power_off_vm": "Running"
+        }
+      },
+      "patch_cleanup": {
+        "operations": {
+          "remove_temp_files": "Running",
+          "clean_logs": "Running"
+        }
+      },
+      "remove_account": {
+        "operations": {
+          "disable_ad_account": "Running",
+          "remove_sudoers": "Running"
+        }
+      }
+    }
+  },
+  {
+    "id": "vm-023",
+    "name": "random-server-23",
+    "stages": {
+      "shutdown": {
+        "operations": {
+          "stop_services": "Running",
+          "power_off_vm": "Running"
+        }
+      },
+      "patch_cleanup": {
+        "operations": {
+          "remove_temp_files": "Running",
+          "clean_logs": "Running"
+        }
+      },
+      "remove_account": {
+        "operations": {
+          "disable_ad_account": "Running",
+          "remove_sudoers": "Running"
+        }
+      }
+    }
+  },
+  {
+    "id": "vm-024",
+    "name": "random-server-24",
+    "stages": {
+      "shutdown": {
+        "operations": {
+          "stop_services": "Not Started",
+          "power_off_vm": "Not Started"
+        }
+      },
+      "patch_cleanup": {
+        "operations": {
+          "remove_temp_files": "Not Started",
+          "clean_logs": "Not Started"
+        }
+      },
+      "remove_account": {
+        "operations": {
+          "disable_ad_account": "Not Started",
+          "remove_sudoers": "Not Started"
+        }
+      }
+    }
+  },
+  {
+    "id": "vm-025",
+    "name": "random-server-25",
+    "stages": {
+      "shutdown": {
+        "operations": {
+          "stop_services": "Not Started",
+          "power_off_vm": "Not Started"
+        }
+      },
+      "patch_cleanup": {
+        "operations": {
+          "remove_temp_files": "Not Started",
+          "clean_logs": "Not Started"
+        }
+      },
+      "remove_account": {
+        "operations": {
+          "disable_ad_account": "Not Started",
+          "remove_sudoers": "Not Started"
         }
       }
     }

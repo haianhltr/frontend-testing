@@ -6,10 +6,12 @@ services:
       context: ./frontend
       dockerfile: Dockerfile.dev
     ports:
-      - "5173:5173"
+      - "${FRONTEND_PORT:-5173}:5173"
     volumes:
       - ./frontend:/app
       - /app/node_modules
+    env_file:
+      - .env
 
   backend:
     build:
@@ -20,14 +22,44 @@ services:
       - ./backend:/app
     environment:
       - PYTHONPATH=/app
+    env_file:
+      - .env   # ✅ Load environment variables from .env
     command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
-    
-  test:
-    build:
-      context: ./backend
-    volumes:
-      - ./backend:/app
-    working_dir: /app
+    depends_on:
+      db:
+        condition: service_healthy
+
+
+
+  # test:
+  #   build:
+  #     context: ./backend
+  #   volumes:
+  #     - ./backend:/app
+  #   working_dir: /app
+  #   environment:
+  #     - PYTHONPATH=/app
+  #   env_file:
+  #     - .env
+  #   command: ["pytest", "tests/"]
+
+  db:
+    image: postgres:15
+    container_name: postgres
+    restart: always
     environment:
-      - PYTHONPATH=/app
-    command: ["pytest", "tests/"]
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: remediation
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 2s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:

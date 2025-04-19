@@ -1,7 +1,14 @@
 from pydantic_settings import BaseSettings
 
 class Settings(BaseSettings):
-    app_name: str = "Auto-Remediation Platform"
-    environment: str = "dev"
+    POSTGRES_USER: str
+    POSTGRES_PASSWORD: str
+    POSTGRES_DB: str
+    POSTGRES_HOST: str
+    POSTGRES_PORT: str
+    DATABASE_URL: str  # ✅ Now an actual field
+
+    class Config:
+        env_file = ".env"
 
 settings = Settings()

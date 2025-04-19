@@ -1,9 +1,12 @@
+# backend/main.py
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import decom
-# from routers import patching, incidents
-from core.config import settings
-from core.job_simulator import update_running_jobs  # ✅ Import the updater
+from domains.decom.api import router as decom_router  # ✅ NEW import
+# from domains.patching.api import router as patching_router
+# from domains.incidents.api import router as incidents_router
+
+from core.job_simulator import update_running_jobs
+from db.init_db import init_db
 import asyncio
 
 app = FastAPI(title="Auto-Remediation Platform")
@@ -17,12 +20,13 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# ✅ Start background loop when app starts
+# ✅ On startup: init DB + start job updater
 @app.on_event("startup")
 async def startup_event():
-    asyncio.create_task(update_running_jobs())  # 🔁 Background checker
+    init_db()
+    asyncio.create_task(update_running_jobs())
 
-# ✅ Mount your routers
-app.include_router(decom.router, prefix="/decom", tags=["Decommissioning"])
-# app.include_router(patching.router, prefix="/patching", tags=["Patching"])
-# app.include_router(incidents.router, prefix="/incidents", tags=["Incidents"])
+# ✅ Mount routers
+app.include_router(decom_router, prefix="/decom", tags=["Decommissioning"])
+# app.include_router(patching_router, prefix="/patching", tags=["Patching"])
+# app.include_router(incidents_router, prefix="/incidents", tags=["Incidents"])
