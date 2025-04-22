@@ -4,7 +4,9 @@ import uuid
 import time
 import random
 import asyncio  # ✅ Needed for background task sleep
-from domains.decom import service as decom_service
+from domains.decom.service import DecomService
+
+decom_service = DecomService()
 
 job_store = {}
 
@@ -35,8 +37,8 @@ def get_job_status(job_id: str):
                     decom_service.update_operation(
                         machine_id=job["machine_id"],
                         stage=job["stage"],
-                        operation=job["operation"],
-                        new_status="Failed"
+                        op=job["operation"],       # ✅ renamed
+                        status="Failed"            # ✅ renamed
                     )
                 except Exception as e:
                     print(f"⚠️ Failed to update Failed status: {e}", flush=True)
@@ -46,8 +48,8 @@ def get_job_status(job_id: str):
                     decom_service.update_operation(
                         machine_id=job["machine_id"],
                         stage=job["stage"],
-                        operation=job["operation"],
-                        new_status="Success"
+                        op=job["operation"],       # ✅ renamed
+                        status="Success"           # ✅ renamed
                     )
                 except Exception as e:
                     print(f"⚠️ Failed to update Success status: {e}", flush=True)
